@@ -7,8 +7,8 @@ package DMBot;
 use base qw(Bot::BasicBot);
 
 my $dm = DMBot->new(
-    server      =>  "skynet.csh.rit.edu",
-    port        =>  "6667",
+    server      =>  "",
+    port        =>  "",
     channels    =>  ["#DND"],
     
     nick        =>  "DMBot",
