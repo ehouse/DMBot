@@ -22,7 +22,7 @@ my $dm = DMBot->new(
 sub said {
     my ($self, $message) = @_;
     if ($message->{body} =~ /^!roll[\s]+(\d+)?d(\d+)/){
-        my $numDice = defined $1 ? $numDice = int($1) : 1;
+        my $numDice = (defined $1) ? int($1) : 1;
         my $val = 0;
         $val += (int(rand($2))+1) for (0 .. $numDice);
         return $val
