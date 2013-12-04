@@ -21,13 +21,11 @@ my $dm = DMBot->new(
 
 sub said {
     my ($self, $message) = @_;
-    if ($message->{body} =~ /^!rtd(\d+)?/){
-        if (defined $1){
-            return int(rand($1))+1
-        }
-        else{
-            return int(rand(20))+1
-        }
+    if ($message->{body} =~ /^!roll[\s]+(\d+)?d(\d+)/){
+        my $numDice = defined $1 ? $numDice = int($1) : 1;
+        my $val = 0;
+        $val += (int(rand($2))+1) for (0 .. $numDice);
+        return $val
     }
 }
 
