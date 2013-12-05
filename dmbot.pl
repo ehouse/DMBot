@@ -9,7 +9,7 @@ use base qw(Bot::BasicBot);
 my $dm = DMBot->new(
     server      =>  "",
     port        =>  "",
-    channels    =>  ["#DND"],
+    channels    =>  [""],
     
     nick        =>  "DMBot",
     alt_nicks   =>  ["The_Real_DMBot"],
@@ -21,11 +21,22 @@ my $dm = DMBot->new(
 
 sub said {
     my ($self, $message) = @_;
-    if ($message->{body} =~ /^!roll[\s]+(\d+)?d(\d+)/){
-        my $numDice = (defined $1) ? int($1) : 1;
-        my $val = 0;
-        $val += (int(rand($2))+1) for (0 .. $numDice);
-        return $val
+    if ($message->{body} =~ /^!roll[\s]+(?<num>\d+)?d(?<sides>\d+)/){
+        my $dice = (defined $+{num}) ? int($+{num}) : 1;
+        my $sides = $+{sides};
+        if ($sides == 0 || $dice == 0){
+            return 0;
+        }
+        my $val = int(rand($dice*$sides))+$dice;
+        if ($val == $dice*$sides){
+            return "$val!";
+        }
+        elsif ($val == $dice){
+            return "$val!";
+        }
+        else{
+            return "$val";
+        }
     }
 }
 
