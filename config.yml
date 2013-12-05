@@ -1,0 +1,14 @@
+server: "some.server.com"
+port: 6667
+channels:
+    - "#channel1"
+    - "#channel2"
+nick: "some_nick"
+alt_nicks:
+    - "nick1"
+    - "nick2"
+username: "UserName"
+name: "Some Full Name"
+ignore_list:
+    - "nick1"
+    - "nick2"

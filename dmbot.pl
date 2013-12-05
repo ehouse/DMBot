@@ -6,18 +6,25 @@ use warnings;
 package DMBot;
 use base qw(Bot::BasicBot);
 
+use Data::Dumper;
+use YAML::Tiny;
+
+my $yaml = YAML::Tiny->read('config.yml');
+
 my $dm = DMBot->new(
-    server      =>  "",
-    port        =>  "",
-    channels    =>  [""],
+    server      =>  $yaml->[0]->{server},
+    port        =>  $yaml->[0]->{port},
+    channels    =>  $yaml->[0]->{channels},
     
-    nick        =>  "DMBot",
-    alt_nicks   =>  ["The_Real_DMBot"],
-    username    =>  "DMBot",
-    name        =>  "D&D DM Bot",
+    nick        =>  $yaml->[0]->{nick},
+    alt_nicks   =>  $yaml->[0]->{alt_nicks},
+    username    =>  $yaml->[0]->{username},
+    name        =>  $yaml->[0]->{name},
 
     ignore_list =>  [qw(RepBot ChanServ)],
 );
+
+print Dumper($dm);
 
 sub said {
     my ($self, $message) = @_;
