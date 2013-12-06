@@ -6,6 +6,7 @@ use warnings;
 package DMBot;
 use base qw(Bot::BasicBot);
 
+use utf8;
 use Data::Dumper;
 use YAML::Tiny;
 
