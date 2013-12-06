@@ -25,8 +25,6 @@ my $dm = DMBot->new(
     ignore_list =>  [qw(RepBot ChanServ)],
 );
 
-print Dumper($dm);
-
 sub said {
     my ($self, $message) = @_;
     if ($message->{body} =~ /^!roll[\s]+(?<num>\d+)?d(?<sides>\d+)/){

@@ -1,5 +1,4 @@
 REQUIRES
 ---
 Bot::BasicBot
-Config::Simple
-Data::Dumper
+YAML::Tiny
